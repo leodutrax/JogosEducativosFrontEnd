@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 export default function App(){
-  const [cliques, setCliques] = useState(0);
-
   return(
     <div style = {{fontFamily: 'Arial, sans-serif', padding:'40px', textAlign: 'center'}}>
       <h1>Cassino Online</h1>
@@ -22,7 +20,6 @@ export default function App(){
         />
 
       <button
-        onClick={() => setCliques(cliques + 1)}
         style = {{padding:'8px 16px', backgroundColor:'#0070f3', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer'}}
         >
           Entrar
