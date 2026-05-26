@@ -1,35 +1,66 @@
-import React, { useState } from "react";
+import { useState } from 'react'
+import './App.css'
+import AreaJogo from './components/AreaJogo'
+import BotaoAcao from './components/BotaoAcao'
+import Carta from './components/Carta'
+import ExemploProps from './components/ExemploProps'
+import HeaderPersonalizado from './components/headerPersonalizado'
+import MaoJogador from './components/MaoJogador'
+import PainelControles from './components/PainelControles'
+import PlacarMesa from './components/PlacarMesa'
+import TituloSecao from './components/TituloSecao'
 
-export default function App(){
-  return(
-    <div style = {{fontFamily: 'Arial, sans-serif', padding:'40px', textAlign: 'center'}}>
-      <h1>Cassino Online</h1>
+function App() {
+  const [pontosJogador, setPontosJogador] = useState(17)
+  const [rodadaAtiva, setRodadaAtiva] = useState(true)
+
+
+  function handleComprarCarta() {
+    setPontosJogador((pontosAtuais) => pontosAtuais + 1)
+  }
+
+  function handleNovaRodada() {
+    setPontosJogador(0)
+    setRodadaAtiva(true)
+  }
+
+  return (
+    <main className="app-aula">
+      <HeaderPersonalizado />
+
+      <TituloSecao />
+      <PlacarMesa maoJogador={pontosJogador} maoDealer={0} />
+      <AreaJogo />
+      <MaoJogador />
+
+      <section className="bloco-demo">
+        <h3>Controles</h3>
+        <p>Pontos do jogador: {pontosJogador}</p>
+        <button type="button" onClick={handleComprarCarta}>
+          Comprar (demo)
+        </button>
+        <button type="button" onClick={handleNovaRodada}>
+          Reiniciar rodada
+        </button>
+        <button type="button" onClick={() => setRodadaAtiva((estadoAtual) => !estadoAtual)}>
+          Alternar status
+     
+        </button>
       
-      <p>Login</p>
-      
-      <input
-        type = "text"
-        placeholder="E-mail"
-        style={{padding: '8px', borderRadius: '4px', border:'1px solid #ccc', marginRight:'10px'}}
-        />
-      
-      <input
-        type = "password"
-        placeholder="Senha"
-        style={{padding: '8px', borderRadius: '4px', border:'1px solid #ccc', marginRight:'10px'}}
-        />
+        <p>{rodadaAtiva ? 'Rodada ativa' : 'Rodada encerrada'}</p>
+      </section>
 
-      <button
-        style = {{padding:'8px 16px', backgroundColor:'#0070f3', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer'}}
-        >
-          Entrar
-          </button>
-          
-          <footer style={{position: 'fixed', bottom:'0', left:'0', width:'100%',backgroundColor:'#fff', padding:'15px 0px', color: '#666', fontSize: '14px'}}>
-            <p>All rights reserved</p>
-          </footer>
-    </div>
+      <section className="bloco-componentes">
+        <h3>Componentes basicos extras</h3>
+        <BotaoAcao />
+        <Carta />
+        <PainelControles />
+      </section>
 
-
-  );
+      <ExemploProps mensagem="abcde" />
+      <ExemploProps mensagem="teste" />
+    </main>
+  )
 }
+
+export default App

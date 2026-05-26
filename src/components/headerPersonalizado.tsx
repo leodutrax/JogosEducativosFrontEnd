@@ -1,19 +1,12 @@
-function headerPersonalizado(){
-   return(
-       <header>
-        <div>
-            <img src="" alt="" />
-        </div>
-        <div>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-            </ul>
-        </div>
+function HeaderPersonalizado() {
+  return (
+    <header className="header-personalizado">
+      <h1>Blackjack (21)</h1>
+      <nav>
+       
+      </nav>
     </header>
-   )
+  )
 }
 
-
-export default headerPersonalizado
+export default HeaderPersonalizado
